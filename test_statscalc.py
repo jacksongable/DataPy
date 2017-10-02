@@ -4,7 +4,12 @@ from StatsCalc import OneVariableStatsCalc
 
 class TestOneVariableStatsCalc(TestCase):
 
+    #  Used for testing all of the algorithms
     _oneVarCalcOdd = None
+
+    #  Used in addition to _oneVarCalcOdd when the algorithm of a method changes depending
+    #  on whether the data set is of odd or even length (such as the algorithm for solving
+    #  the median or quartiles)
     _oneVarCalcEven = None
 
     def setUp(self):
@@ -14,23 +19,14 @@ class TestOneVariableStatsCalc(TestCase):
         self._oneVarCalcEven = OneVariableStatsCalc(_dataEven)
         self._oneVarCalcOdd = OneVariableStatsCalc(_dataOdd)
 
-    def test_mean_odd(self):
+    def test_mean(self):
         self.assertEqual(7, self._oneVarCalcOdd.mean(), "Odd mean calculation")
 
-    def test_mean_even(self):
-        self.assertEqual(7, self._oneVarCalcEven.mean(), "Even mean calculation")
-
-    def test_min_odd(self):
+    def test_min(self):
         self.assertEqual(1, self._oneVarCalcOdd.min(), "Odd minimum calculation")
 
-    def test_min_even(self):
-        self.assertEqual(2, self._oneVarCalcEven.min(), "Even minimum calculation")
-
-    def test_max_odd(self):
+    def test_max(self):
         self.assertEqual(13, self._oneVarCalcOdd.max(), "Odd maximum calculation")
-
-    def test_max_even(self):
-        self.assertEqual(12, self._oneVarCalcEven.max(), "Even maximum calculation")
 
     def test_median_odd(self):
         self.assertEqual(7, self._oneVarCalcOdd.median(), "Odd median calculation")
@@ -50,14 +46,14 @@ class TestOneVariableStatsCalc(TestCase):
     def test_q3_even(self):
         self.assertEqual(10, self._oneVarCalcEven.q3(), "Even Q3 calculation")
 
-    def test_range_odd(self):
+    def test_range(self):
         self.assertEqual(12, self._oneVarCalcOdd.range(), "Odd range calculation")
-
-    def test_range_even(self):
-        self.assertEqual(10, self._oneVarCalcEven.range(), "Even range calculation")
 
     def test_iqr_odd(self):
         self.assertEqual(8, self._oneVarCalcOdd.iqr(), "Odd IQR calculation")
 
     def test_iqr_even(self):
         self.assertEqual(6, self._oneVarCalcEven.iqr(), "Even IQR calculation")
+
+    def test_std_dev(self):
+        self.assertEqual(4, self._oneVarCalcOdd.std_dev(), "Standard deviation calculation")
