@@ -1,10 +1,11 @@
 #
 # This class performs 1-variable statistics calculations on the data set it is initialized with.
-# Since the data set is immutable, each bound method only runs the necessary calculations once,
+# Since the data set is immutable, each bound method only runs the necessary calculations once
 # in order to increase efficiency.
 #
-class OneVariableStatsCalc:
 
+
+class OneVariableStatsCalc:
     _data = []
     _mean = None
     _max = None
@@ -27,8 +28,10 @@ class OneVariableStatsCalc:
         total = 0
         for x in data:
             total += x
-        self._mean = total / len(self._data)
-        return self._mean
+        mean = total / len(data)
+        if data is None and self._mean is None:
+            self._mean = mean
+        return mean
 
     def max(self):
         if self._max is not None:
@@ -51,35 +54,41 @@ class OneVariableStatsCalc:
         return self._min
 
     def median(self, data=None):
-        if data is None and self._med is not None:
+        if data is None and self._med is not None:  # if method has already performed calculation on default data set
             return self._med
-        if data is None:
+
+        if data is None:  # if method has not already executed and should perform calculation on default data set
             data = self._data
+
         max_index = len(data) - 1
 
-        if len(data) % 2 == 1: #list length is odd
-            median = data[max_index / 2]
-        else:
-            medians = (data[max_index // 2], data[max_index // 2 + 1])
-            median = self.mean(medians)
-        self._med = median
+        if len(data) % 2 == 1:  # odd-length data set algorithm
+            med_index = max_index / 2
+            self._med = data[med_index]
+
+        else:  # even-length data set algorithm, this is where it gets (marginally more) interesting
+            lower_med_index = max_index // 2
+            upper_med_index = lower_med_index + 1
+            self._med = self.mean([data[lower_med_index], data[upper_med_index]])
         return self._med
 
     def q1(self):
-        if self._q1 is not None:
+        if self._q1 is not None:  # if calculation has already been performed
             return self._q1
-        if len(self._data) % 2 == 1:
-            stop = (len(self._data) - 1) / 2
-        else:
-            stop = len(self._data) / 2
-        self._q1 = self.median(list[0 : stop])
+
+        max_index = len(self._data) - 1
+        if len(self._data) % 2 == 1:  # data length is odd
+            stop = max_index / 2
+        else:  # data length is even
+            stop = (max_index // 2) + 1
+        self._q1 = self.median(self._data[0: stop])
         return self._q1
 
     def q3(self):
         if self._q3 is not None:
             return self._q3
         if len(self._data) % 2 == 1:
-            start = len(self._data) / 2 + 1
+            start = (len(self._data) // 2) + 1
         else:
             start = len(self._data) / 2
         self._q3 = self.median(self._data[start : len(self._data)])
@@ -90,38 +99,11 @@ class OneVariableStatsCalc:
             return self._range
         if data is None:
             data = self._data
-        self._range = list[len(data) - 1] - data[0]
+        self._range = data[len(data) - 1] - data[0]
         return self._range
 
-    def calc_iqr (self):
+    def iqr(self):
         if self._iqr is not None:
             return self._iqr
         self._iqr = self.q3() - self.q1()
         return self._iqr
-
-
-
-
-
-
-
-#Eventually you'll be able to do a lot more cool stuff.
-
-print ("Hi there! Enter the data. 'C' to stop.");
-
-list = []
-
-while True:
-    val = raw_input()
-    if val == "c" or val == "C":
-        break
-    elif val.isalpha():
-        print("Oops! Not a valid option")
-        continue
-    list.append(float(val))
-
-calc = OneVariableStatsCalc(list)
-
-print("Q1", calc.q1())
-print("Median", calc.median())
-print("Q3", calc.q3())
