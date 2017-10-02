@@ -1,5 +1,5 @@
 from unittest import TestCase
-from StatsCalc import OneVariableStatsCalc
+from StatsCalc import OneVarStatsCalc
 
 
 class TestOneVariableStatsCalc(TestCase):
@@ -16,8 +16,8 @@ class TestOneVariableStatsCalc(TestCase):
         _dataOdd = [1, 3, 5, 7, 9, 11, 13]
         _dataEven = [2, 4, 6, 8, 10, 12]
 
-        self._oneVarCalcEven = OneVariableStatsCalc(_dataEven)
-        self._oneVarCalcOdd = OneVariableStatsCalc(_dataOdd)
+        self._oneVarCalcEven = OneVarStatsCalc(_dataEven)
+        self._oneVarCalcOdd = OneVarStatsCalc(_dataOdd)
 
     def test_mean(self):
         self.assertEqual(7, self._oneVarCalcOdd.mean(), "Odd mean calculation")
