@@ -85,7 +85,7 @@ class OneVarStatsCalc:
     def std_dev(self):
         count_inverse = len(self.__data) ** -1
         squared_variance_sum = 0
-        mean = self.mean()
+        mean = self.mean() #  Prevents self.mean() from running during each for loop iteration
         for val in self.__data:
             squared_variance_sum += (val - mean) ** 2
 

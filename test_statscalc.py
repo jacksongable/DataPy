@@ -20,13 +20,13 @@ class TestOneVariableStatsCalc(TestCase):
         self._oneVarCalcOdd = OneVarStatsCalc(_dataOdd)
 
     def test_mean(self):
-        self.assertEqual(7, self._oneVarCalcOdd.mean(), "Odd mean calculation")
+        self.assertEqual(7, self._oneVarCalcOdd.mean(), "Mean calculation")
 
     def test_min(self):
-        self.assertEqual(1, self._oneVarCalcOdd.min(), "Odd minimum calculation")
+        self.assertEqual(1, self._oneVarCalcOdd.min(), "Minimum calculation")
 
     def test_max(self):
-        self.assertEqual(13, self._oneVarCalcOdd.max(), "Odd maximum calculation")
+        self.assertEqual(13, self._oneVarCalcOdd.max(), "Maximum calculation")
 
     def test_median_odd(self):
         self.assertEqual(7, self._oneVarCalcOdd.median(), "Odd median calculation")
@@ -47,7 +47,7 @@ class TestOneVariableStatsCalc(TestCase):
         self.assertEqual(10, self._oneVarCalcEven.q3(), "Even Q3 calculation")
 
     def test_range(self):
-        self.assertEqual(12, self._oneVarCalcOdd.range(), "Odd range calculation")
+        self.assertEqual(12, self._oneVarCalcOdd.range(), "Range calculation")
 
     def test_iqr_odd(self):
         self.assertEqual(8, self._oneVarCalcOdd.iqr(), "Odd IQR calculation")
