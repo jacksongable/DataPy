@@ -24,19 +24,11 @@ class OneVarStatsCalc:
 
     #  Calculates the maximum value in the data
     def max(self):
-        current_max = self.__data[0]
-        for element in self.__data:
-            if element > current_max:
-                current_max = element
-        return current_max
+        return self.__data[len(self.__data) - 1]
 
     #  Calculates the minimum value in the data
     def min(self):
-        current_min = self.__data[0]
-        for element in self.__data:
-            if element < current_min:
-                current_min = element
-        return current_min
+        return self.__data[0]
 
     #  Calculates the median value in the data
     def median(self, data=None):
@@ -108,6 +100,6 @@ class OneVarStatsCalc:
         uf = self.upper_fence()
         lf = self.lower_fence()
         for x in self.__data:
-            if x > uf or x < lf:
+            if lf < x < uf:
                 outliers.append(x)
         return outliers

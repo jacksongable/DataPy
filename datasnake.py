@@ -84,4 +84,5 @@ while True:
     elif selection == 12:
         print "Outliers:\t", stats.outliers()
     elif selection == 13:
+        print "Exiting."
         exit(0)
