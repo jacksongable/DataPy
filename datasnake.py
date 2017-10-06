@@ -24,8 +24,8 @@ def parse_selection():
     while True:
         choice = raw_input()
         valid = False
-        if choice.isalnum():
-            if 0 < int(choice) < 14: #  TODO: This line throws a ValueError if the user's input is invalid.
+        if choice.isdigit():
+            if 0 < int(choice) < 14:
                 valid = True
         if not valid:
             print "Oops! Invalid entry."
