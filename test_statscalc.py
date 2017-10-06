@@ -57,3 +57,17 @@ class TestOneVariableStatsCalc(TestCase):
 
     def test_std_dev(self):
         self.assertEqual(4, self._oneVarCalcOdd.std_dev(), "Standard deviation calculation")
+
+    def test_upper_fence(self):
+        self.assertEqual(23, self._oneVarCalcOdd.upper_fence(), "Upper fence calculation")
+
+    def test_lower_fence(self):
+        self.assertEqual(-9, self._oneVarCalcOdd.lower_fence(), "Lower fence calculation")
+
+    def test_outliers(self):
+        outlier_calc = OneVarStatsCalc([0, 50, 51, 52, 53, 999])
+        outliers = outlier_calc.outliers()
+
+        for outlier in outliers:
+            if outlier != 0 or outlier != 999:
+                self.fail("Outlier test failed.")

@@ -91,3 +91,23 @@ class OneVarStatsCalc:
 
         std_dev_square = count_inverse * squared_variance_sum
         return sqrt(std_dev_square)
+
+    #  Calculates the upper fence of the data.
+    #  Numbers in the data set higher than the value of the upper fence are considered outliers
+    def upper_fence(self):
+        return self.iqr() * 1.5 + self.q3()
+
+    #  Calculates the lower fence of the data.
+    #  Numbers in the data set lower than the value of the lower fence are considered outliers
+    def lower_fence(self):
+        return self.q1() - self.iqr() * 1.5
+
+    #  Calculates and returns the outliers in the data set
+    def outliers(self):
+        outliers = []
+        uf = self.upper_fence()
+        lf = self.lower_fence()
+        for x in self.__data:
+            if x > uf or x < lf:
+                outliers.append(x)
+        return outliers

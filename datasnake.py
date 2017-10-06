@@ -25,4 +25,7 @@ print "Third Quartile:\t", stats.q3()
 print "Maximum:\t", stats.max()
 print "Range:\t", stats.range()
 print "Interquartile range:\t", stats.iqr()
+print "Upper fence:\t", stats.upper_fence()
+print "Lower fence:\t", stats.lower_fence()
+print "Outliers:\t", stats.outliers()
 
