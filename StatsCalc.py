@@ -100,6 +100,6 @@ class OneVarStatsCalc:
         uf = self.upper_fence()
         lf = self.lower_fence()
         for x in self.__data:
-            if lf < x < uf:
+            if x > uf or x < lf:
                 outliers.append(x)
         return outliers

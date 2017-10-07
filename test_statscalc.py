@@ -69,5 +69,5 @@ class TestOneVariableStatsCalc(TestCase):
         outliers = outlier_calc.outliers()
 
         for outlier in outliers:
-            if outlier != 0 or outlier != 999:
+            if outlier != 0 and outlier != 999:
                 self.fail("Outlier test failed.")
