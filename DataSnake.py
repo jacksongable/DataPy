@@ -103,3 +103,48 @@ class OneVarStatsCalc:
             if x > uf or x < lf:
                 outliers.append(x)
         return outliers
+
+
+class TwoVarStatsCalc:
+
+    __x_list = None
+    __y_list = None
+    __data_length = None
+
+    def __init__(self, x_list, y_list):
+        if len(x_list) != len(y_list):
+            raise Exception("Lists of x-values and y-values must be of equal length.")
+        else:
+            self.__x_list = x_list
+            self.__y_list = y_list
+            self.__data_length = len(self.__x_list) #  Lengths of self.__x_list and self.__y_list are equal
+
+    def r(self):
+        x_calc = OneVarStatsCalc(self.__x_list)
+        y_calc = OneVarStatsCalc(self.__y_list)
+
+        x_mean = x_calc.mean()
+        y_mean = y_calc.mean()
+
+        sd_x = x_calc.std_dev()
+        sd_y = y_calc.std_dev()
+
+        z_scores_x = []
+        for x in self.__x_list:
+            z_scores_x.append((x - x_mean) / sd_x)
+        z_scores_y = []
+        for y in self.__y_list:
+            z_scores_y.append((y - y_mean) / sd_y)
+
+        z_prod = []
+        for index in range(len(z_scores_x)):
+            z_prod.append(z_scores_x[index] * z_scores_y[index])
+
+        z_sum = 0
+        for val in z_prod:
+            z_sum += val
+
+        return z_sum / (self.__data_length - 1)
+
+    def r2(self):
+        return self.r() ** 2
