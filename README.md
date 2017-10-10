@@ -19,6 +19,6 @@ The DataSnake module currently supports the following 1-variable statistics calc
     <li>Outliers</li>
 </ul>
 
-##2-Variable Calculations
+## 2-Variable Calculations
 
 2-variable statistics calculations features are on the way. Stay tuned!
