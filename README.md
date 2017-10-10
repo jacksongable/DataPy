@@ -21,4 +21,4 @@ The DataSnake module currently supports the following 1-variable statistics calc
 
 ## 2-Variable Calculations
 
-2-variable statistics calculations features are on the way. Stay tuned!
+2-variable statistics calculations are on the way. Stay tuned!
