@@ -1,5 +1,24 @@
 # DataSnake
 
-DataSnake is a Python script that performs statistical calculations based on user-inputted data. At the moment, it consists of basic driver code and a class that performs one-variable statistics calculations.
+DataSnake is a Python library that performs statistical calculations on lists of real numbers.
 
-In order to use this utility without the driver code, developers should pass a list of numbers to the class's constructor upon instantiation. Then, various methods can be invoked to perform calculations on the data. Please note the data set OneVarStatsCalc is initialized with is immutable.
+
+## 1-Variable Calculations
+The DataSnake module currently supports the following 1-variable statistics calculations:
+<ul>
+    <li>Mean</li>
+    <li>Minimum</li>
+    <li>Quartile 1</li>
+    <li>Median</li>
+    <li>Quartile 3</li>
+    <li>Maximum</li>
+    <li>Range</li>
+    <li>IQR</li>
+    <li>Standard deviation</li>
+    <li>Lower/upper fences</li>
+    <li>Outliers</li>
+</ul>
+
+##2-Variable Calculations
+
+2-variable statistics calculations features are on the way. Stay tuned!
