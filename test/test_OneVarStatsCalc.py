@@ -66,11 +66,11 @@ class TestOneVariableStatsCalc(TestCase):
         self.assertAlmostEquals(7.936, self.odd_float_calc.iqr(), "IQR algorithm failed for odd-length float data")
         self.assertAlmostEquals(7.0, self.even_float_calc.iqr(), "IQR algorithm failed for even-length float data")
 
-    def test_std_dev(self):
-        self.assertEqual(4, self.odd_int_calc.std_dev(), "Standard deviation algorithm failed for odd-length int data")
-        self.assertAlmostEquals(3.41565025, self.even_int_calc.std_dev(), msg="Standard deviation algorithm failed for even-length int data")
-        self.assertAlmostEquals(3.8390873, self.odd_float_calc.std_dev(), msg="Standard deviation algorithm failed for odd-length float data")
-        self.assertAlmostEquals(4.66603835, self.even_float_calc.std_dev(), msg="Standard deviation algorithm failed for even-length float data")
+    def test_pop_std_dev(self):
+        self.assertEqual(4, self.odd_int_calc.pop_std_dev(), "Standard deviation algorithm failed for odd-length int data")
+        self.assertAlmostEquals(3.41565025, self.even_int_calc.pop_std_dev(), msg="Standard deviation algorithm failed for even-length int data")
+        self.assertAlmostEquals(3.8390873, self.odd_float_calc.pop_std_dev(), msg="Standard deviation algorithm failed for odd-length float data")
+        self.assertAlmostEquals(4.66603835, self.even_float_calc.pop_std_dev(), msg="Standard deviation algorithm failed for even-length float data")
 
     def test_upper_fence(self):
         self.assertEqual(23, self.odd_int_calc.upper_fence(), "Upper fence algorithm failed for odd-length int data")

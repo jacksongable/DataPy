@@ -21,4 +21,12 @@ The DataSnake module currently supports the following 1-variable statistics calc
 
 ## 2-Variable Calculations
 
-2-variable statistics calculations are on the way. Stay tuned!
+The module currently supports the following 2-variable statistics calculations:
+
+<ul>
+    <li>Correlation coefficient (r)</li>
+    <li>Coefficient of determination (r-squared)</li>
+    <li>Linear regression equation</li>
+ </ul>
+ 
+ More features are on the way. Stay tuned!
