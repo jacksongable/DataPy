@@ -1,11 +1,17 @@
+#
+# Copyright (c) 2017 Jackson Gable
+#
+# This file is released under the MIT License.
+#
+
 from __future__ import division
 from math import sqrt
 from math import fabs
 
+
 #
 # This class performs 1-variable statistics calculations on the data set it is initialized with.
 #
-
 class OneVarStatsCalc:
 
     def __init__(self, data):
@@ -183,3 +189,5 @@ class TwoVarStatsCalc:
             return "y = {}x + {}".format(m, b)
         elif b == 0: # Very unlikely, just covering all the bases.
             return "y = {}x".format(m)
+
+

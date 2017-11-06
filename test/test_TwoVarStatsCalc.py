@@ -1,5 +1,11 @@
+#
+# Copyright (c) 2017 Jackson Gable
+#
+# This file is released under the MIT License.
+#
+
 from unittest import TestCase
-from DataSnake import  TwoVarStatsCalc
+from DataPy import TwoVarStatsCalc
 
 
 class TestTwoVariableStatsCalc(TestCase):
